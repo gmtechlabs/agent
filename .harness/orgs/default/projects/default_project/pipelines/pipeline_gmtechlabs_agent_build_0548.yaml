@@ -1,6 +1,7 @@
 pipeline:
   id: pipeline_gmtechlabs_agent_build_0548
   name: pipeline_gmtechlabs_agent_build_0548
+  description: Runs the pr review agent to review a pull request and recommend whether to approve it.
   stages:
     - name: Build
       id: build
@@ -13,12 +14,10 @@ pipeline:
       cache:
         enabled: true
       steps:
-        - name: Verify Checkout
-          id: verify_checkout
-          run:
-            shell: bash
-            script: |-
-              echo "Repository checked out successfully"
-              ls -la
+        - name: PR Review
+          id: pr_review
+          template:
+            uses: ca_pr_review@1.0.0
   tags:
     onboarding: "true"
+    ai_generated: ""
