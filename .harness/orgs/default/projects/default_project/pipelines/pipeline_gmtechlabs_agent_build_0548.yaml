@@ -1,0 +1,24 @@
+pipeline:
+  id: pipeline_gmtechlabs_agent_build_0548
+  name: pipeline_gmtechlabs_agent_build_0548
+  stages:
+    - name: Build
+      id: build
+      runtime: cloud
+      platform:
+        os: linux
+        arch: amd64
+      clone:
+        enabled: true
+      cache:
+        enabled: true
+      steps:
+        - name: Verify Checkout
+          id: verify_checkout
+          run:
+            shell: bash
+            script: |-
+              echo "Repository checked out successfully"
+              ls -la
+  tags:
+    onboarding: "true"
